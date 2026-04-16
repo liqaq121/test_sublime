@@ -1,0 +1,58 @@
+{
+  "working_dir": "${folder}",
+  "shell_cmd": "cmake --preset x64-debug && cmake --build --preset x64-debug",
+  "variants": [
+    {
+      "name": "x64-debug-config",
+      "shell_cmd": "cmake --preset debug"
+    },
+    {
+      "name": "x64-release-config",
+      "shell_cmd": "cmake --preset release"
+    },
+    {
+      "name": "x64-debug-build",
+      "shell_cmd": "cmake --build --preset debug --parallel"
+    },
+    {
+      "name": "x64-release-build",
+      "shell_cmd": "cmake --build --preset release --parallel"
+    },
+    {
+      "name": "Run Debug",
+      "shell_cmd": ".\\build\\debug\\test.exe"
+    },
+    {
+      "name": "Run Release",
+      "shell_cmd": ".\\build\\release\\test.exe"
+    },
+    {
+      "name": "Clear Build Debug",
+      "shell_cmd": "if exist build\\debug rmdir /s /q build\\debug"
+    },
+    {
+      "name": "Clear Build Release",
+      "shell_cmd": "if exist build\\release rmdir /s /q build\\release"
+    },
+    {
+      "name": "Clear Build",
+      "shell_cmd": "if exist build rmdir /s /q build"
+    },
+    {
+      "name": "Deploy Debug",
+      "shell_cmd": "D:/Qt5.15.2/5.15.2/msvc2019_64/bin/windeployqt build/debug/test.exe"
+    },
+    {
+      "name": "Deploy Release",
+      "shell_cmd": "D:/Qt5.15.2/5.15.2/msvc2019_64/bin/windeployqt build/release/test.exe"
+    },
+    {
+      "name": "oneKey-Debug",
+      "shell_cmd": "cmake --workflow --preset debug --parallel"
+    },
+    {
+      "name": "oneKey-Release",
+      "shell_cmd": "cmake --workflow --preset release"
+    },
+  ]
+}

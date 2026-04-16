@@ -1,0 +1,42 @@
+name: CD - GitHub Release
+
+permissions:
+  contents: write
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+    # CD 不需要拉代码
+    #- name: 拉代码
+    #  uses: actions/checkout@v4
+
+    - name: 下载发布产物
+      uses: dawidd6/action-download-artifact@v3
+      with:
+        workflow: ci.yml
+        name: target
+        path: app
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: 查看发布产物列表
+      run: ls -R app
+
+    - name: 打包发布产物
+      run: |
+        zip -r app.zip app
+
+    - name: 创建 Github Release
+      uses: softprops/action-gh-release@v2
+      with:
+        tag_name: ${{ github.ref_name }}
+        name: Release ${{ github.ref_name }}
+        files: app.zip
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

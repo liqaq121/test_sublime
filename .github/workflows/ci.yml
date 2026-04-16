@@ -1,0 +1,50 @@
+name: C++ Build (MSVC + Ninja)
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - name: 拉代码
+      uses: actions/checkout@v4
+      with:
+        submodules: true
+
+    - name: 安装 MSVC 2019
+      uses: ilammy/msvc-dev-cmd@v1
+      with:
+        vsversion: 2019
+
+    - name: 安装 Qt 5.15.2
+      uses: jurplel/install-qt-action@v4
+      with:
+        version: 5.15.2
+        host: windows
+        target: desktop
+        arch: win64_msvc2019_64   # ⚠️ GitHub 上用这个
+        cache: true
+
+    - name: 安装 Ninja
+      uses: seanmiddleditch/gha-setup-ninja@v4
+
+    - name: 配置 CMake
+      run: cmake --preset x64-release
+
+    - name: 编译
+      run: cmake --build --preset x64-release
+
+    # ⭐⭐⭐关键：部署 Qt DLL⭐⭐⭐
+    - name: 使用 windeployqt
+      run: |
+        windeployqt build/release/test_sublime.exe
+
+    - name: 上传可执行文件
+      uses: actions/upload-artifact@v4
+      with:
+        name: target
+        path: build/release

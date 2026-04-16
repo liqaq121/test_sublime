@@ -20,11 +20,11 @@
     },
     {
       "name": "Run Debug",
-      "shell_cmd": ".\\build\\debug\\test.exe"
+      "shell_cmd": ".\\bin\\debug\\test.exe"
     },
     {
       "name": "Run Release",
-      "shell_cmd": ".\\build\\release\\test.exe"
+      "shell_cmd": ".\\bin\\release\\test.exe"
     },
     {
       "name": "Clear Build Debug",
@@ -40,11 +40,11 @@
     },
     {
       "name": "Deploy Debug",
-      "shell_cmd": "D:/Qt5.15.2/5.15.2/msvc2019_64/bin/windeployqt build/debug/test.exe"
+      "shell_cmd": "D:/Qt5.15.2/5.15.2/msvc2019_64/bin/windeployqt bin/debug/test.exe"
     },
     {
       "name": "Deploy Release",
-      "shell_cmd": "D:/Qt5.15.2/5.15.2/msvc2019_64/bin/windeployqt build/release/test.exe"
+      "shell_cmd": "D:/Qt5.15.2/5.15.2/msvc2019_64/bin/windeployqt bin/release/test.exe"
     },
     {
       "name": "oneKey-Debug",

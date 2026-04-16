@@ -68,7 +68,7 @@ jobs:
       shell: pwsh
       run: |
         # ====== 根据你的项目改这里 ======
-        $exe = "build/release/test.exe"
+        $exe = "bin/release/test.exe"
 
         echo "EXE=$exe"
 
@@ -84,7 +84,7 @@ jobs:
         $outDir = "release_package"
         New-Item -ItemType Directory -Force -Path $outDir
 
-        Copy-Item -Recurse build/release/* $outDir/
+        Copy-Item -Recurse bin/release/* $outDir/
 
         Compress-Archive -Path $outDir/* -DestinationPath app.zip -Force
 

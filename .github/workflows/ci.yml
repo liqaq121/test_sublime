@@ -43,7 +43,7 @@ jobs:
     # ⭐⭐⭐关键：部署 Qt DLL⭐⭐⭐
     - name: 使用 windeployqt
       run: |
-        windeployqt build/release/test_sublime.exe
+        windeployqt build/release/test.exe
 
     - name: 上传可执行文件
       uses: actions/upload-artifact@v4

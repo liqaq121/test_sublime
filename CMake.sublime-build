@@ -48,7 +48,7 @@
     },
     {
       "name": "oneKey-Debug",
-      "shell_cmd": "cmake --workflow --preset debug --parallel"
+      "shell_cmd": "cmake --workflow --preset debug"
     },
     {
       "name": "oneKey-Release",

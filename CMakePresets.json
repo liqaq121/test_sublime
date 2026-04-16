@@ -1,0 +1,73 @@
+{
+  "version": 6,
+  "configurePresets": [
+    {
+      "hidden": true,
+      "name": "ninja_x64",
+      "environment": {},
+      "architecture": {
+        "strategy": "external",
+        "value": "x64"
+      },
+      "cacheVariables": {
+        "CMAKE_CXX_STANDARD": "17",
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
+      },
+      "generator": "Ninja"
+    },
+    {
+      "name": "x64-debug",
+      "inherits": "ninja_x64",
+      "binaryDir": "${sourceDir}/build/debug",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug"
+      }
+    },
+    {
+      "name": "x64-release",
+      "inherits": "ninja_x64",
+      "binaryDir": "${sourceDir}/build/release",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "x64-debug",
+      "configurePreset": "x64-debug"
+    },
+    {
+      "name": "x64-release",
+      "configurePreset": "x64-release"
+    }
+  ],
+  "workflowPresets": [
+  {
+    "name": "x64-debug",
+    "steps": [
+      {
+        "type": "configure",
+        "name": "x64-debug"
+      },
+      {
+        "type": "build",
+        "name": "x64-debug"
+      }
+    ]
+  },
+  {
+    "name": "x64v-release",
+    "steps": [
+      {
+        "type": "configure",
+        "name": "x64-release"
+      },
+      {
+        "type": "build",
+        "name": "x64-release"
+      }
+    ]
+  }
+  ]
+}

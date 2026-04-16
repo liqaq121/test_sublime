@@ -1,0 +1,57 @@
+{
+  "version": 6,
+  "configurePresets": [
+    {
+      "name": "debug",
+      "inherits": "x64-debug",
+      "cacheVariables": {
+        "CMAKE_PREFIX_PATH": "D:/Qt5.15.2/5.15.2/msvc2019_64"
+      }
+    },
+    {
+      "name": "release",
+      "inherits": "x64-release",
+      "cacheVariables": {
+        "CMAKE_PREFIX_PATH": "D:/Qt5.15.2/5.15.2/msvc2019_64"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "debug",
+      "configurePreset": "debug"
+    },
+    {
+      "name": "release",
+      "configurePreset": "release"
+    }
+  ],
+  "workflowPresets": [
+  {
+    "name": "debug",
+    "steps": [
+      {
+        "type": "configure",
+        "name": "debug"
+      },
+      {
+        "type": "build",
+        "name": "debug"
+      }
+    ]
+  },
+  {
+    "name": "release",
+    "steps": [
+      {
+        "type": "configure",
+        "name": "release"
+      },
+      {
+        "type": "build",
+        "name": "release"
+      }
+    ]
+  }
+  ]
+}

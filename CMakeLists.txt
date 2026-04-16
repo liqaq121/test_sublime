@@ -12,5 +12,8 @@ find_package(Qt5 COMPONENTS Core Widgets REQUIRED)
 
 file(GLOB SRC *.cpp *.h *.ui)
 add_executable(${PROJECT_NAME} ${SRC})
+set_target_properties(${PROJECT_NAME} PROPERTIES 
+  WIN32_EXECUTABLE TRUE
+)
 
 target_link_libraries(${PROJECT_NAME} PRIVATE Qt5::Core Qt5::Widgets) 

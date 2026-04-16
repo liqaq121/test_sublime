@@ -34,16 +34,10 @@
   ],
   "buildPresets": [
     {
-      "name": "build-base",
-      "hidden": "true"
-    },
-    {
-      "inherits": "build-base",
       "name": "x64-debug",
       "configurePreset": "x64-debug"
     },
     {
-      "inherits": "build-base",
       "name": "x64-release",
       "configurePreset": "x64-release"
     }
